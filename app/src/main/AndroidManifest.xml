@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.materialtest2">
+    package="com.example.ddwiki">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,35 +11,35 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".otherpage.MainpageActivity"></activity>
+        <activity android:name="com.example.ddwiki.otherpage.MainpageActivity"></activity>
         <activity
-            android:name=".FifthActivity"
+            android:name="com.example.ddwiki.FifthActivity"
             android:label="其他运营" />
         <activity
-            android:name=".activities.OtherActivity"
+            android:name="com.example.ddwiki.activities.OtherActivity"
             android:theme="@style/HoloActivityTheme" />
         <activity
-            android:name=".ForthActivity"
+            android:name="com.example.ddwiki.ForthActivity"
             android:label="四大天王" />
         <activity
-            android:name=".activities.FourActivity"
+            android:name="com.example.ddwiki.activities.FourActivity"
             android:theme="@style/HoloActivityTheme" />
         <activity
-            android:name=".ThirdActivity"
+            android:name="com.example.ddwiki.ThirdActivity"
             android:label="个人势" />
         <activity
-            android:name=".activities.IndActivity"
+            android:name="com.example.ddwiki.activities.IndActivity"
             android:theme="@style/HoloActivityTheme" />
         <activity
-            android:name=".SecondActivity"
+            android:name="com.example.ddwiki.SecondActivity"
             android:label="彩虹社" />
         <activity
-            android:name=".activities.NJSJActivity"
+            android:name="com.example.ddwiki.activities.NJSJActivity"
             android:theme="@style/HoloActivityTheme" />
         <activity
-            android:name=".activities.HoloActivity"
+            android:name="com.example.ddwiki.activities.HoloActivity"
             android:theme="@style/HoloActivityTheme" />
-        <activity android:name=".Welcome">
+        <activity android:name="com.example.ddwiki.Welcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -47,7 +47,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.ddwiki.MainActivity"
             android:label="Hololive"></activity>
     </application>
 
