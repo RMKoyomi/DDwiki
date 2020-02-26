@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@android:drawable/ic_menu_help"
+            android:title="首页"/>
+        <item
+            android:id="@+id/nav_holo"
+            android:icon="@android:drawable/ic_media_play"
+            android:title="Hololive"/>
+        <item
+            android:id="@+id/nav_nijisanji"
+            android:icon="@android:drawable/ic_menu_call"
+            android:title="彩虹社"/>
+        <item
+            android:id="@+id/nav_independent"
+            android:icon="@android:drawable/ic_menu_agenda"
+            android:title="个人势"/>
+        <item
+            android:id="@+id/nav_four"
+            android:icon="@android:drawable/ic_media_pause"
+            android:title="四大天王"/>
+        <item
+            android:id="@+id/nav_other"
+            android:icon="@android:drawable/ic_media_next"
+            android:title="其他运营"/>
+
+    </group>
+
+</menu>
