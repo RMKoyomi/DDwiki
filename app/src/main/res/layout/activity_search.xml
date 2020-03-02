@@ -16,5 +16,11 @@
         >
     </com.example.ddwiki.search.SearchView>
 
+    <ListView
+        android:id="@+id/search_target"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
+
 
 </LinearLayout>

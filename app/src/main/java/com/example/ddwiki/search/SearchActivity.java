@@ -4,7 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.ddwiki.R;
@@ -20,7 +24,7 @@ import java.util.List;
 public class SearchActivity extends AppCompatActivity implements OnSearchListener {
 
     private SearchView searchView;
-    EditText mEditSearch;
+
 
 
     @Override
@@ -32,7 +36,23 @@ public class SearchActivity extends AppCompatActivity implements OnSearchListene
     }
 
     @Override
-    public void search(String content){
+    public void search(final String content){
+        String[] str = {"搜索："+ content};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                SearchActivity.this,android.R.layout.simple_list_item_1,str
+        );
+        ListView listView = (ListView) findViewById(R.id.search_target);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        search(content);
+                        break;
+                }
+            }
+        });
         List<Vtubers> vtubers = DataSupport.where("name = ?",content).find(Vtubers.class);
         if(vtubers.size()!=0) {
             //Toast.makeText(this, "搜索内容： " + vtubers.get(0), Toast.LENGTH_SHORT).show();
