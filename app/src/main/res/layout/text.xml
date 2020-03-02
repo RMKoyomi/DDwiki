@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:text="点击左上角菜单栏可以选择查询不同分类的Vtuber，点击右上方的搜索按钮可以自行搜索想要查找的Vtuber，你也可以在目录页点击右下角的搜索按钮查找Vtuber。"
+        android:text="点击左上角菜单栏可以选择查询不同分类的Vtuber，点击右上方的搜索按钮可以自行搜索想要查找的Vtuber，你也可以在分类页点击右下角的搜索按钮查找Vtuber。"
         android:textColor="#000"
         android:textSize="15dp"
         />

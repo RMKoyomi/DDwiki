@@ -18,9 +18,11 @@ import android.widget.Toast;
 
 import com.example.ddwiki.Vtbclass.NJSJ;
 import com.example.ddwiki.adapters.NJSJAdapter;
+import com.example.ddwiki.otherpage.AboutActivity;
 import com.example.ddwiki.otherpage.MainpageActivity;
 import com.example.ddwiki.R;
 import com.example.ddwiki.db.Vtubers;
+import com.example.ddwiki.search.SearchActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -113,14 +115,8 @@ public class SecondActivity extends MainActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view,"你点开了一个查找功能",Snackbar.LENGTH_SHORT)
-                        .setAction("取消", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Toast.makeText(SecondActivity.this,"取消查找",
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        }).show();
+                Intent intent = new Intent(SecondActivity.this, SearchActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -305,14 +301,12 @@ public class SecondActivity extends MainActivity {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
-            /*
-            case R.id.delete:
-                Toast.makeText(this,"You clicked Delete",
-                        Toast.LENGTH_SHORT).show();
-                break;*/
+            case R.id.search:
+
+                break;
             case R.id.settings:
-                Toast.makeText(this,"You clicked Settings",
-                        Toast.LENGTH_SHORT).show();
+                Intent intent2 = new Intent(SecondActivity.this, AboutActivity.class);
+                startActivity(intent2);
                 break;
             default:
         }

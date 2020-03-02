@@ -23,6 +23,7 @@ import com.example.ddwiki.MainActivity;
 import com.example.ddwiki.R;
 import com.example.ddwiki.SecondActivity;
 import com.example.ddwiki.ThirdActivity;
+import com.example.ddwiki.search.SearchActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -111,12 +112,12 @@ public class MainpageActivity extends MainActivity {
                 break;
 
             case R.id.search:
-                Toast.makeText(this,"You clicked search",
-                        Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainpageActivity.this, SearchActivity.class);
+                startActivity(intent);
                 break;
             case R.id.settings:
-                Toast.makeText(this,"You clicked Settings",
-                        Toast.LENGTH_SHORT).show();
+                Intent intent2 = new Intent(MainpageActivity.this, AboutActivity.class);
+                startActivity(intent2);
                 break;
             default:
         }
