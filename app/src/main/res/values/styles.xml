@@ -6,10 +6,19 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowExitAnimation">@transition/slide</item>
+        <item name="android:windowEnterAnimation">@transition/explode</item>
+
+
     </style>
 
     <style name="HoloActivityTheme" parent="AppTheme">
 
+    </style>
+
+    <style name="LoginTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 
 </resources>

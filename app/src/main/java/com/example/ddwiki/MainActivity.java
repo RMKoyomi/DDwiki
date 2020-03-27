@@ -3,12 +3,15 @@ package com.example.ddwiki;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.viewpager.widget.ViewPager;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -19,11 +22,13 @@ import android.widget.Toast;
 
 import com.example.ddwiki.adapters.HoloAdapter;
 import com.example.ddwiki.otherpage.AboutActivity;
+import com.example.ddwiki.otherpage.IntroduceActivity;
 import com.example.ddwiki.otherpage.MainpageActivity;
 import com.example.ddwiki.R;
 import com.example.ddwiki.Vtbclass.Hololive;
 import com.example.ddwiki.db.Vtubers;
 import com.example.ddwiki.search.SearchActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -73,11 +78,30 @@ public class MainActivity extends AppCompatActivity {
 
     private SwipeRefreshLayout swipeRefresh;
 
+    /*
+    private BottomNavigationView.OnNavigationItemSelectedListener
+            mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener(){
+        @Override
+        public boolean onNavigationItemSelected(MenuItem item){
+            switch (item.getItemId()){
+                case R.id.navigation_home:
+                    Toast.makeText(MainActivity.this,"1",Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.navigation_dashboard:
+                    break;
+            }
+            return true;
+        }
+    };*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        overridePendingTransition(R.transition.from_right, R.transition.no_slide);
 
+        setContentView(R.layout.activity_main);
+//        BottomNavigationView navigation = findViewById(R.id.navigation);
+//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //点击打开滑动菜单
@@ -86,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_launcher_menu);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         }
         //滑动菜单的点击事件
         navView.setCheckedItem(R.id.nav_holo);
@@ -134,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        initFruits();
+        initHolo();
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         GridLayoutManager layoutManager = new GridLayoutManager(this,2);
         recyclerView.setLayoutManager(layoutManager);
@@ -146,13 +170,13 @@ public class MainActivity extends AppCompatActivity {
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                refreshFruits();
+                refreshHolo();
             }
         });
         ActivityCollector.addActivity(this);
     }
 
-    private void refreshFruits(){
+    private void refreshHolo(){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -164,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        initFruits();
+                        initHolo();
                         adapter.notifyDataSetChanged();
                         swipeRefresh.setRefreshing(false);
                     }
@@ -173,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 
-    private void initFruits(){
+    private void initHolo(){
         /**
          * 数据库操作
          */
@@ -262,8 +286,8 @@ public class MainActivity extends AppCompatActivity {
         vtubers14.setName("大空昴");
         vtubers14.setImageId(R.drawable.subaru_pic);
         vtubers14.save();
-        namestr[13] = vtubers13.getName();
-        imagestr[13] = vtubers13.getImageId();
+        namestr[13] = vtubers14.getName();
+        imagestr[13] = vtubers14.getImageId();
         Vtubers vtubers15 = new Vtubers();
         vtubers15.setName("兔田佩克拉");
         vtubers15.setImageId(R.drawable.peko_pic);
@@ -380,10 +404,13 @@ public class MainActivity extends AppCompatActivity {
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
             case R.id.search:
+                //item.setIcon(ContextCompat.getDrawable(this,R.drawable.ic_like));
                 break;
             case R.id.settings:
                 Intent intent2 = new Intent(MainActivity.this, AboutActivity.class);
-                startActivity(intent2);
+                startActivity(intent2, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                break;
+            case R.id.settings2:
                 break;
             default:
         }
@@ -425,4 +452,11 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.transition.no_slide, R.transition.out_left);
+    }
+
 }

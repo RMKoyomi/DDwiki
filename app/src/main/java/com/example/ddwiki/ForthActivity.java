@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.ddwiki.adapters.FourAdapter;
 import com.example.ddwiki.otherpage.AboutActivity;
+import com.example.ddwiki.otherpage.IntroduceActivity;
 import com.example.ddwiki.otherpage.MainpageActivity;
 import com.example.ddwiki.R;
 import com.example.ddwiki.Vtbclass.Four;
@@ -61,7 +63,7 @@ public class ForthActivity extends MainActivity {
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_launcher_menu);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         }
         //滑动菜单的点击事件
         navView.setCheckedItem(R.id.nav_four);
@@ -215,7 +217,11 @@ public class ForthActivity extends MainActivity {
                 break;
             case R.id.settings:
                 Intent intent2 = new Intent(ForthActivity.this, AboutActivity.class);
-                startActivity(intent2);
+                startActivity(intent2, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                break;
+            case R.id.settings2:
+                Intent intent3 = new Intent(ForthActivity.this, IntroduceActivity.class);
+                startActivity(intent3);
                 break;
             default:
         }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_white"
+        android:title="首页" />
+
+    <item
+        android:id="@+id/navigation_about"
+        android:icon="@drawable/ic_mainpage"
+        android:title="企业介绍" />
+
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/ic_like"
+        android:title="同人图推荐" />
+
+    <item
+        android:id="@+id/navigation_like"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="分类" />
+
+
+</menu>

@@ -2,6 +2,7 @@ package com.example.ddwiki;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,7 +31,7 @@ public class Welcome extends AppCompatActivity {
         public void handleMessage(Message msg){
             //实现页面跳转
             Intent intent = new Intent(Welcome.this, MainpageActivity.class);
-            startActivity(intent);
+            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(Welcome.this).toBundle());
             finish();
             super.handleMessage(msg);
         }

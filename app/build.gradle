@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.example.ddwiki"
-        minSdkVersion 15
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -34,4 +34,10 @@ dependencies {
     implementation 'org.litepal:LitePal:1.2.0'
     implementation 'com.squareup.okhttp3:okhttp:4.3.1'
     implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+    implementation fileTree(dir: 'D:\\study\\MovingImageView-master\\MovingImageView-master', include: ['*.aar', '*.jar'], exclude: [])
+    implementation 'cn.bingoogolapple:bga-banner:3.0.0@aar'
+    implementation 'com.loopeer.library:cardstack:1.0.2'
+    implementation 'com.github.lichuanzhi7909:banner:1.0'
+    implementation 'com.github.LillteZheng:ViewPagerHelper:v2.2'
 }

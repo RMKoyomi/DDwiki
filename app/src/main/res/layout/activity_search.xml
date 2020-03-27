@@ -7,20 +7,48 @@
     android:orientation="vertical"
     tools:context="com.example.ddwiki.search.SearchActivity">
 
-
-    <com.example.ddwiki.search.SearchView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:id="@+id/sv_default"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
         >
-    </com.example.ddwiki.search.SearchView>
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_action_back"
+            />
+        <com.example.ddwiki.search.SearchView
+            android:layout_width="370dp"
+            android:layout_height="250dp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:id="@+id/sv_default"
+            >
+        </com.example.ddwiki.search.SearchView>
+    </RelativeLayout>
+
+
 
     <ListView
         android:id="@+id/search_target"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </ListView>
+    <ListView
+        android:id="@+id/search_history"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text = "搜索历史："
+        >
+    </ListView>
+
 
 
 </LinearLayout>

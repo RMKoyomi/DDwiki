@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_white"
+    android:fitsSystemWindows="true"
+    >
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:fitsSystemWindows="true">
+
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            >
+
+            <ImageView
+                android:id="@+id/holo_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:fitsSystemWindows="true"
+                android:src="@drawable/ic_introbackground"
+                app:layout_collapseMode="parallax"
+
+                />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin">
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="35dp"
+                app:cardCornerRadius="4dp"
+                >
+
+
+                <TextView
+                    android:id="@+id/holo_content_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="      Vtuber是指使用虚拟形象在视频网站上进行投稿活动的up主，以虚拟YouTuber最为人所知，关于虚拟UP主的定义至今仍比较模糊。
+狭义的虚拟UP主以原创的虚拟人格设定、形象在视频网站、社交平台上进行活动。形象多以MMD或Unity的3D模型或Live2D制作的2D模型出现，并以真人声优配音，但声优一般情况下并不公开。视频形式多种多样，vlog和游戏实况较多。
+虚拟UP主的概念是由绊爱在2016年11月以虚拟YouTuber的形式开创的，绊爱也是公认的第一个虚拟YouTuber。自绊爱大热以后，2017年出现了大量的虚拟YouTuber。需要注意的是，由于绊爱的设定为AI，导致一部分人将其他虚拟UP主的设定一并误认为AI。而实际上，并非所有虚拟UP主的设定均为AI，其他的虚拟UP主各有各自的设定。
+广义的虚拟UP主是指以虚拟形象在视频网站上进行投稿活动的up主，并不对是否为虚拟人设进行限制。以此标准进行衡量，Ami Yamato可视作世界上第一个虚拟YouTuber。但其仅是以动画形象替代自身形象进行投稿，其背后具有真实身份，可以认为是广义的虚拟YouTuber。
+2018年起由于VTuber的兴起，一些动画组也会让该剧动画的角色推出VTuber，为作品进行宣传，但大多为短期经营。
+"
+                    android:textColor="#000"
+                    android:textSize="15dp"
+                    />
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

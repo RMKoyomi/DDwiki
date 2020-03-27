@@ -3,13 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/search"
-        android:icon="@android:drawable/ic_menu_search"
+        android:icon="@drawable/ic_search"
         android:title="查找"
         app:showAsAction="always"
         />
     <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_setting"
-        android:title="关于"
+        android:title="关于DD百科"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/settings2"
+        android:icon="@drawable/ic_setting"
+        android:title="关于虚拟YouTuber"
         app:showAsAction="never"/>
 </menu>

@@ -11,21 +11,25 @@
         android:layout_height="70dp"
         android:src="@drawable/nav_icon"
         android:layout_centerInParent="true"/>
+
     <TextView
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="请选择vtuber分类"
+        android:layout_marginBottom="0dp"
+        android:text="可以从下方切换分类哦"
+        android:layout_centerInParent="true"
         android:textColor="#FFF"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/mail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/username"
-        android:text="欢迎使用DD百科"
+        android:gravity="center"
+        android:text=""
         android:textColor="#FFF"
         android:textSize="20sp"
         />

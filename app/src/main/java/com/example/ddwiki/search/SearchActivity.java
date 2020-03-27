@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -24,7 +25,7 @@ import java.util.List;
 public class SearchActivity extends AppCompatActivity implements OnSearchListener {
 
     private SearchView searchView;
-
+    private Button backbutton;
 
 
     @Override
@@ -33,6 +34,13 @@ public class SearchActivity extends AppCompatActivity implements OnSearchListene
         setContentView(R.layout.activity_search);
         searchView = (SearchView)findViewById(R.id.sv_default);
         searchView.setOnSearchListener(this);
+        backbutton = (Button)findViewById(R.id.back_button);
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
@@ -58,9 +66,14 @@ public class SearchActivity extends AppCompatActivity implements OnSearchListene
             //Toast.makeText(this, "搜索内容： " + vtubers.get(0), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(SearchActivity.this, SearchResultActivity.class);
             intent.putExtra("name",content);
+            intent.putExtra("image_id",R.drawable.searchbackground_pic);
             startActivity(intent);
         }else {
-            Toast.makeText(this,"在数据库没有查找到该词条的百科",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"在数据库没有查找到该词条的百科，现在跳转到互联网查找...",Toast.LENGTH_SHORT).show();
+            Intent intent2 = new Intent(SearchActivity.this, SearchResultActivity.class);
+            intent2.putExtra("name",content);
+            intent2.putExtra("image_id",R.drawable.searchbackground_pic);
+            startActivity(intent2);
         }
        // Toast.makeText(this,"搜索内容： "+content,Toast.LENGTH_SHORT).show();
     }

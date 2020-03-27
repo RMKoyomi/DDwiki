@@ -76,7 +76,7 @@ public class SearchView extends FrameLayout implements SearchExtendImpl{
 
         imgRid = typedArray.getInteger(R.styleable.koyomi_search_style_img_src,R.mipmap.serch);
         // 默认的float是px，所以要转成dp
-        imgSize = typedArray.getDimension(R.styleable.koyomi_search_style_img_size,  DimensionUtils.dip2px(context,24));
+        imgSize = typedArray.getDimension(R.styleable.koyomi_search_style_img_size,  DimensionUtils.dip2px(context,20));
         edtHint = typedArray.getString(R.styleable.koyomi_search_style_edt_hint);
         edtHintColor = typedArray.getColor(R.styleable.koyomi_search_style_edt_hint, getResources().getColor(R.color.get_grey_code));
         seaBackgroup = typedArray.getInteger(R.styleable.koyomi_search_style_search_backgroup,R.drawable.bg_search_default);

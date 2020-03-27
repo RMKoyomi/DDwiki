@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_meaquabackground"
+        />
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_gravity="bottom"
+        android:background="#88F7F3F3"
+        android:id="@+id/welcome_text"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="欢迎使用DD百科"
+            android:textColor="#000"
+            android:textSize="25dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="点击左上角菜单栏可以选择查询不同分类的Vtuber，点击右上方的搜索按钮可以自行搜索想要查找的Vtuber"
+            android:textColor="#000"
+            android:textSize="15dp"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

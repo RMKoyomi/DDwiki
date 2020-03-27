@@ -5,29 +5,7 @@
     android:id="@+id/drawer_layout6"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ddwiki.MainpageActivity">
-
-    <ImageView
-        android:id="@+id/background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_meaquabackground"
-        />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:fitsSystemWindows="true"
-        >
-
-        <include layout="@layout/text" />
-
-        <include layout="@layout/title"/>
-
-    </LinearLayout>
+    tools:context="com.example.ddwiki.otherpage.MainpageActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -51,6 +29,27 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+        <LinearLayout
+            android:id="@+id/mainview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+        </LinearLayout>
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bnv"
+            style="@style/Widget.Design.BottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:background="?android:attr/windowBackground"
+            app:elevation="16dp"
+            app:menu="@menu/navigation">
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -59,8 +58,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/nav_menu"
-        app:headerLayout="@layout/nav_header">
+        app:menu="@menu/nav_menu2"
+        app:headerLayout="@layout/nav_header2">
     </com.google.android.material.navigation.NavigationView>
+
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

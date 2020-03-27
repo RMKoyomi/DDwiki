@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.ddwiki.adapters.OtherAdapter;
 import com.example.ddwiki.otherpage.AboutActivity;
+import com.example.ddwiki.otherpage.IntroduceActivity;
 import com.example.ddwiki.otherpage.MainpageActivity;
 import com.example.ddwiki.R;
 import com.example.ddwiki.Vtbclass.Others;
@@ -63,7 +65,7 @@ public class FifthActivity extends MainActivity {
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_launcher_menu);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         }
         //滑动菜单的点击事件
         navView.setCheckedItem(R.id.nav_other);
@@ -155,8 +157,8 @@ public class FifthActivity extends MainActivity {
          * 数据库操作
          */
         Connector.getDatabase();
-        String[] namestr = new String[9];
-        int[] imagestr = new int[9];
+        String[] namestr = new String[10];
+        int[] imagestr = new int[10];
         Vtubers vtubers60 = new Vtubers();
         vtubers60.setName("猫宫日向");
         vtubers60.setImageId(R.drawable.hinata_pic);
@@ -211,14 +213,20 @@ public class FifthActivity extends MainActivity {
         vtubers68.save();
         namestr[8] = vtubers68.getName();
         imagestr[8] = vtubers68.getImageId();
+        Vtubers vtuber69 = new Vtubers();
+        vtuber69.setName("田中姬");
+        vtuber69.setImageId(R.drawable.himehina_pic);
+        vtuber69.save();
+        namestr[9] = vtuber69.getName();
+        imagestr[9] = vtuber69.getImageId();
 
         Others[] others = {new Others(namestr[0],imagestr[0]),new Others(namestr[1],imagestr[1]),
                 new Others(namestr[2],imagestr[2]),new Others(namestr[3],imagestr[3]),
                 new Others(namestr[4],imagestr[4]),new Others(namestr[5],imagestr[5]),
                 new Others(namestr[6],imagestr[6]),new Others(namestr[7],imagestr[7]),
-                new Others(namestr[8],imagestr[8])};
+                new Others(namestr[8],imagestr[8]),new Others(namestr[9],imagestr[9])};
         othersList.clear();
-        for (int i = 0;i<9;i++){
+        for (int i = 0;i<10;i++){
             othersList.add(others[i]);
         }
     }
@@ -243,7 +251,11 @@ public class FifthActivity extends MainActivity {
                 break;
             case R.id.settings:
                 Intent intent2 = new Intent(FifthActivity.this, AboutActivity.class);
-                startActivity(intent2);
+                startActivity(intent2, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                break;
+            case R.id.settings2:
+                Intent intent3 = new Intent(FifthActivity.this, IntroduceActivity.class);
+                startActivity(intent3);
                 break;
             default:
         }
