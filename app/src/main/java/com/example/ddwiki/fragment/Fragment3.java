@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -43,6 +44,8 @@ public class Fragment3 extends Fragment{
     public Bitmap bitmap;
     public float scaleWidth;
     public float scaleHeight;
+
+
 
 
     @Override
@@ -84,45 +87,37 @@ public class Fragment3 extends Fragment{
         DisplayMetrics dm = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
         int height = dm.heightPixels;
-        int width = dm.widthPixels;
+        int width = dm.widthPixels;*/
 
         //initView();
+        /*
         bitmap = ((BitmapDrawable)iview.getDrawable()).getBitmap();
         scaleWidth = width/bitmap.getWidth();
         scaleHeight = height/bitmap.getHeight();*/
 
     }
 
+    /*
     private void initView(){
-        //iview = (ImageView)getActivity().findViewById(R.id.iv);
-        iview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()){
-                    case R.id.iv:
-                        if(!isAmplification){
-                            matrix.set(iview.getImageMatrix());
-                            matrix.postScale(scaleWidth,scaleHeight);
-                            Bitmap newbitmap = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),
-                                    bitmap.getHeight(),matrix,true);
-                            iview.setImageBitmap(newbitmap);
-                            isAmplification = true;
-                        }
-                        else {
-                            matrix.set(iview.getImageMatrix());
-                            matrix.postScale(1.0f,1.0f);
-                            Bitmap newbitmap = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),
-                                    bitmap.getHeight(),matrix,true);
-                            iview.setImageBitmap(newbitmap);
-                            isAmplification = false;
-                        }
-                        break;
-                default:break;
-                }
-
+        // TODO Auto-generated method stub
+        iview.setOnClickListener(new View.OnClickListener() { // 点击放大
+            public void onClick(View paramView) {
+                LayoutInflater inflater = LayoutInflater.from(getContext());
+                View imgEntryView = inflater.inflate(R.layout.dialog_photo_entry, null); // 加载自定义的布局文件
+                final AlertDialog dialog = new AlertDialog.Builder(getContext()).create();
+                ImageView img1 = (ImageView)imgEntryView.findViewById(R.id.large_image);
+                img1.setImageResource(R.drawable.pic_1);
+                dialog.setView(imgEntryView); // 自定义dialog
+                dialog.show();
+                // 点击布局文件（也可以理解为点击大图）后关闭dialog，这里的dialog不需要按钮
+                imgEntryView.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View paramView) {
+                        dialog.cancel();
+                    }
+                });
             }
         });
-    }
+    }*/
 
 
 }

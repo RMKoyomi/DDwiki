@@ -29,6 +29,8 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import org.litepal.tablemanager.Connector;
 
+import java.util.Calendar;
+
 public class HistoryActivity extends AppCompatActivity {
     public static final String HIS_NAME = "his_name";
 
@@ -90,16 +92,31 @@ public class HistoryActivity extends AppCompatActivity {
         Intent intent2 = getIntent();
         String Name2 = intent2.getStringExtra(HIS_NAME);
         int imageId2 = intent2.getIntExtra(HIS_IMAGE_ID,0);
+        String Datetime = getTime();
 
         db2 = new HisDBHelper(this);
         SQLiteDatabase db= db2.getWritableDatabase();
+        db.delete("his","hisname = ?",new String[]{Name2});
         ContentValues values2 = new ContentValues();
         values2.put("hisname",Name2);
         values2.put("hisimageid",imageId2);
+        values2.put("histime",Datetime);
 
         db.insert("his",null,values2);
         //Toast.makeText(this,"加入历史记录",Toast.LENGTH_SHORT).show();
         db.close();
+    }
+
+    public String getTime(){
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH)+1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+
+        String datetime1 = year+"."+month+"."+day+" "+hour+":"+minute;
+        return datetime1;
     }
     /*
         public void collect(Like like){
@@ -127,7 +144,7 @@ public class HistoryActivity extends AppCompatActivity {
         db.close();
     }
 
-
+*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.toolbar3,menu);
@@ -140,22 +157,9 @@ public class HistoryActivity extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 break;
-            case R.id.like:
-                if(item.getTitle().equals("收藏")) {
-                    item.setIcon( R.drawable.ic_like);
-                    Toast.makeText(this, "收藏成功", Toast.LENGTH_SHORT).show();
-                    collect(like);
-                    item.setTitle("取消收藏");
-                }else {
-                    del();
-                    Toast.makeText(this,"取消收藏",Toast.LENGTH_SHORT).show();
-                    item.setIcon(R.drawable.ic_like_before);
-                    item.setTitle("收藏");
-                }
-                break;
             default:
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 }

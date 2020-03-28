@@ -11,9 +11,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".otherpage.HistoryCollectActivity"
-            android:label="历史记录"
-            ></activity>
+        <activity android:name=".otherpage.dialogphotoActivity"></activity>
+        <activity
+            android:name=".otherpage.HistoryCollectActivity"
+            android:label="历史记录" />
         <activity
             android:name=".otherpage.LikeCollectActivity"
             android:label="收藏夹" />

@@ -16,6 +16,7 @@ public class HisDBHelper extends SQLiteOpenHelper {
     private static final String TBL_DETAILHIS="his"; //创建表名为his的表
     private static final String TBL_DETAILHIS_COLUMN_NAME="hisname";
     private static final String TBL_DETAILNHIS_COLUMN_IMAGEID="hisimageid";
+    private static final String TBL_DETAILNHIS_COLUMN_DATETIME="histime";
     public HisDBHelper(Context context){
         super(context,DBNAME,null,VERSION);
     }
@@ -26,7 +27,8 @@ public class HisDBHelper extends SQLiteOpenHelper {
         sb.append("create table if not exists ");
         sb.append(TBL_DETAILHIS+"(");
         sb.append(TBL_DETAILHIS_COLUMN_NAME +" varchar(100) primary key ,"); //设置主键
-        sb.append(TBL_DETAILNHIS_COLUMN_IMAGEID+ " integer ");
+        sb.append(TBL_DETAILNHIS_COLUMN_IMAGEID+ " integer ,");
+        sb.append(TBL_DETAILNHIS_COLUMN_DATETIME+ " varchar(100) ");
         sb.append(")");
         db.execSQL(sb.toString());
     }

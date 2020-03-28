@@ -26,6 +26,8 @@ import com.example.ddwiki.db.HisDBHelper;
 import com.example.ddwiki.db.LikesDBHelper;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
+import java.util.Calendar;
+
 public class FourActivity extends AppCompatActivity {
     public static final String FOUR_NAME = "four_name";
 
@@ -90,12 +92,15 @@ public class FourActivity extends AppCompatActivity {
         Intent intent2 = getIntent();
         String Name2 = intent2.getStringExtra(FOUR_NAME);
         int imageId2 = intent2.getIntExtra(FOUR_IMAGE_ID,0);
+        String Datetime = getTime();
 
         db2 = new HisDBHelper(this);
         SQLiteDatabase db= db2.getWritableDatabase();
+        db.delete("his","hisname = ?",new String[]{Name2});
         ContentValues values2 = new ContentValues();
         values2.put("hisname",Name2);
         values2.put("hisimageid",imageId2);
+        values2.put("histime",Datetime);
 
         db.insert("his",null,values2);
         //Toast.makeText(this,"加入历史记录",Toast.LENGTH_SHORT).show();
@@ -112,6 +117,7 @@ public class FourActivity extends AppCompatActivity {
 
         dbHelper = new LikesDBHelper(this);
         SQLiteDatabase db= dbHelper.getWritableDatabase();
+
         ContentValues values = new ContentValues();
         values.put("name",Name);
         values.put("imageid",imageId);
@@ -127,6 +133,18 @@ public class FourActivity extends AppCompatActivity {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.delete("Likes","name = ?",new String[]{Name});
         db.close();
+    }
+
+    public String getTime(){
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH)+1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+
+        String datetime1 = year+"."+month+"."+day+" "+hour+":"+minute;
+        return datetime1;
     }
 
     @Override

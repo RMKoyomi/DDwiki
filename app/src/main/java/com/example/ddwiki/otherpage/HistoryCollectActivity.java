@@ -149,6 +149,7 @@ public class HistoryCollectActivity extends MainActivity {
             History history = new History();
             history.setName(c.getString(c.getColumnIndex("hisname")));
             history.setImageId(c.getInt(c.getColumnIndex("hisimageid")));
+            history.setDatetime(c.getString(c.getColumnIndex("histime")));
 
             historyList.add(history);
         }/*

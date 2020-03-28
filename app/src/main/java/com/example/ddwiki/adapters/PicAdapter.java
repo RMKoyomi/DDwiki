@@ -1,8 +1,11 @@
 package com.example.ddwiki.adapters;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.graphics.Picture;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -13,20 +16,29 @@ import android.widget.TextView;
 
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ddwiki.R;
 import com.example.ddwiki.Vtbclass.pictures;
+import com.example.ddwiki.otherpage.dialogphotoActivity;
 
 import java.util.List;
 import java.util.Random;
 
+import static org.litepal.LitePalApplication.getContext;
+
 public class PicAdapter extends RecyclerView.Adapter<PicAdapter.ViewHolder> {
+
+    private Context mContext;
 
     private List<pictures> picList;
 
+    private LayoutInflater bsman = null;
+
     public PicAdapter(List<pictures> picList) {
         this.picList = picList;
+
     }
 
     private ImageView iview;
@@ -37,6 +49,7 @@ public class PicAdapter extends RecyclerView.Adapter<PicAdapter.ViewHolder> {
     public Bitmap bitmap;
     public float scaleWidth;
     public float scaleHeight;
+    private int id;
 
     @NonNull
     @Override
@@ -50,24 +63,37 @@ public class PicAdapter extends RecyclerView.Adapter<PicAdapter.ViewHolder> {
         int height = dm.heightPixels;
         int width = dm.widthPixels;
 
-        //initView();
         bitmap = ((BitmapDrawable)iview.getDrawable()).getBitmap();
         scaleWidth = width/bitmap.getWidth();
         scaleHeight = height/bitmap.getHeight();
+
+        if(mContext == null){
+            mContext = viewGroup.getContext();
+        }
 
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        pictures pics = picList.get(i);
+        final pictures pics = picList.get(i);
         viewHolder.picImage.setImageResource(pics.getImageId());
+        viewHolder.picImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                id =pics.getImageId();
+                Intent intent = new Intent(mContext, dialogphotoActivity.class);
+                intent.putExtra(dialogphotoActivity.IMAGE_ID, id);
+                mContext.startActivity(intent);
+            }
+        });
 
         ViewGroup.LayoutParams params = viewHolder.picImage.getLayoutParams();
         params.height = params.height + new Random().nextInt(300);
         viewHolder.picImage.setLayoutParams(params);
 
         viewHolder.picTitle.setText(pics.getName());
+        //initView(pics);
     }
 
     @Override
@@ -88,32 +114,11 @@ public class PicAdapter extends RecyclerView.Adapter<PicAdapter.ViewHolder> {
         }
     }
 
-    private void initView(){
-        //iview = (ImageView)getActivity().findViewById(R.id.iv);
-        iview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()){
-                    case R.id.iv:
-                        if(!isAmplification){
-                            matrix.set(iview.getImageMatrix());
-                            matrix.postScale(scaleWidth,scaleHeight);
-                            Bitmap newbitmap = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),
-                                    bitmap.getHeight(),matrix,true);
-                            iview.setImageBitmap(newbitmap);
-                            isAmplification = true;
-                        }
-                        else {
-                            matrix.set(iview.getImageMatrix());
-                            matrix.postScale(1.0f,1.0f);
-                            Bitmap newbitmap = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),
-                                    bitmap.getHeight(),matrix,true);
-                            iview.setImageBitmap(newbitmap);
-                            isAmplification = false;
-                        }
-                        break;
-                    default:break;
-                }
+    private void initView(final pictures picture){
+
+        // TODO Auto-generated method stub
+        iview.setOnClickListener(new View.OnClickListener() { // 点击放大
+            public void onClick(View paramView) {
 
             }
         });
